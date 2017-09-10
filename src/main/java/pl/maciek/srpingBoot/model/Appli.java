@@ -19,12 +19,12 @@ public class Appli {
 
     private static final Logger log = LoggerFactory.getLogger(Appli.class);
 
-    public static void main(String args[]) {
-
-        Appli appli = new Appli();
-        WeatherInfo weatherInfo = appli.backWeather("london");
-        System.out.println(weatherInfo.toString());
-    }
+//    public static void main(String args[]) {
+//
+//        Appli appli = new Appli();
+//        WeatherInfo weatherInfo = appli.backWeather("london");
+//        System.out.println(weatherInfo.toString());
+//    }
 
     public WeatherInfo backWeather (String findCity) {
 

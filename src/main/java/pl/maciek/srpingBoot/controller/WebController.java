@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import pl.maciek.srpingBoot.jsonweather.WeatherInfo;
 import pl.maciek.srpingBoot.model.Appli;
-import pl.maciek.srpingBoot.model.Article;
+//import pl.maciek.srpingBoot.model.Article;
 
 import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 
@@ -20,19 +20,7 @@ import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabe
 @Controller
 public class WebController  {
 
-//
-//    @GetMapping("/")
-//    public String hello(){
-//        return "hello";
-//    }
-//
-//    String name = "maciek";
-//
-//    @ResponseBody
-//    @GetMapping("/hello")
-//    public String helloname(){
-//        return "HELLLLLO" + name;
-//    }
+
     @Autowired
     private Appli appli;
 
@@ -42,18 +30,15 @@ public class WebController  {
         return "article/add";
     }
 
-//    @GetMapping("/show")
-//    public String show(@ModelAttribute Article article, ModelMap modelMap){
-//        modelMap.addAttribute("article", article);
-//        return "article/show";
-//    }
 
     @GetMapping("/show")
     public String show(@RequestParam ("city") String city, ModelMap modelMap){
         modelMap.addAttribute("city", city);
-//        System.out.println(city);
+//      System.out.println(city);
         WeatherInfo weatherInfo = appli.backWeather(city);
         modelMap.addAttribute("temp",weatherInfo.getMain().getTemp());
+        modelMap.addAttribute("pressure",weatherInfo.getMain().getPressure());
+        modelMap.addAttribute("humidity",weatherInfo.getMain().getHumidity());
         return "article/show";
     }
 }
